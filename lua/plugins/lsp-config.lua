@@ -22,6 +22,22 @@ return {
 			local lspconfig = require("lspconfig")
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
+				settings = {
+					Lua = {
+						workspace = {
+							checkThirdParty = false,
+							telemetry = {
+								enable = false,
+							},
+							library = {
+								"${3rd}/love2d/library",
+							},
+						},
+						diagnostics = {
+							disable = { "lowercase-global", "param-type-mismatch" },
+						},
+					},
+				},
 			})
 			lspconfig.ts_ls.setup({
 				capabilities = capabilities,
